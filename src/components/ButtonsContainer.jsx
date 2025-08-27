@@ -4,15 +4,16 @@ import ResetButton from "./buttons/ResetButton";
 import RunButton from "./buttons/RunButton";
 
 function ButtonsContainer() {
-  const [output, setOutput] = useState("");
+  const [hint, setHint] = useState("");
+
   return (
     <>
       <section>
-        <HintButton />
+        <HintButton setHint={setHint} />
         <RunButton />
         <ResetButton />
       </section>
-      <p>{output}</p>
+      <p>{hint}</p>
     </>
   );
 }
