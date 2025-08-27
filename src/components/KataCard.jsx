@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 function KataCard({ title, topic, difficulty, description }) {
   return (
     <section>
@@ -5,6 +7,9 @@ function KataCard({ title, topic, difficulty, description }) {
       <p>Topic:{topic}</p>
       <p>Difficulty:{difficulty}</p>
       <p>Description: {description}</p>
+      <Link to={`/kata`}>
+        <button>try this kata</button>
+      </Link>
     </section>
   );
 }

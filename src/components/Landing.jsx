@@ -4,7 +4,7 @@ function Landing() {
   return (
     <>
       <h1>Welcome to our coding game</h1>
-      <Link>
+      <Link to={`/onboarding`}>
         <button>Start</button>
       </Link>
     </>
