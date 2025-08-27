@@ -16,3 +16,5 @@ function ButtonsContainer() {
     </>
   );
 }
+
+export default ButtonsContainer;
