@@ -3,11 +3,18 @@ import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 
 function Kata() {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(`function sum(a,b){
+  // your code here
+};`);
 
   return (
     <>
-      <CodeMirror height="300px" extensions={[javascript()]} />
+      <CodeMirror
+        value={input}
+        height="300px"
+        extensions={[javascript()]}
+        onChange={(value) => setInput(value)}
+      />
     </>
   );
 }
