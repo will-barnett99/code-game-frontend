@@ -6,9 +6,10 @@ import Textbox from "./Textbox";
 import ButtonsContainer from "./ButtonsContainer";
 
 function Kata() {
-  const [input, setInput] = useState(`function sum(a,b){
+  const initCode = `function sum(a,b){
   // your code here
-};`);
+};`;
+  const [input, setInput] = useState(initCode);
 
   return (
     <>
@@ -20,7 +21,7 @@ function Kata() {
         extensions={[javascript()]}
         onChange={(value) => setInput(value)}
       />
-      <ButtonsContainer />
+      <ButtonsContainer initCode={initCode} setInput={setInput} />
     </>
   );
 }

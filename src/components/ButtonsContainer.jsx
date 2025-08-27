@@ -3,7 +3,7 @@ import HintButton from "./buttons/HintButton";
 import ResetButton from "./buttons/ResetButton";
 import RunButton from "./buttons/RunButton";
 
-function ButtonsContainer() {
+function ButtonsContainer({ initCode, setInput }) {
   const [hint, setHint] = useState("");
 
   return (
@@ -11,7 +11,7 @@ function ButtonsContainer() {
       <section>
         <HintButton setHint={setHint} />
         <RunButton />
-        <ResetButton />
+        <ResetButton initCode={initCode} setInput={setInput} />
       </section>
       <p>{hint}</p>
     </>
