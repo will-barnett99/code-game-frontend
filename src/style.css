@@ -1,8 +1,16 @@
+#root {
+  background-image: url("/assets/Background-Image.svg");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+
 @import "tailwindcss";
 
 @layer utilities {
-  .font-pixelify { font-family: "Pixelify Sans", sans-serif; }
+  .font-pixelify {
+    font-family: "Pixelify Sans", sans-serif;
+  }
 }
 @import "@fontsource/pixelify-sans/400.css";
 @import "@fontsource/pixelify-sans/700.css";
-
