@@ -8,9 +8,9 @@ function Steps() {
   ];
 
   return (
-    <section>
-      <h3>How to Choose a Kata</h3>
-      <ol>
+    <section className="mb-6">
+      <h3 className="font-semibold text-lg mb-2">How to Choose a Kata</h3>
+      <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
         {steps.map((step, index) => (
           <li key={index}>{step}</li>
         ))}
