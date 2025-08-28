@@ -77,16 +77,8 @@ function KataGallery() {
 
   return (
     <>
-      <p> Welcome! Here are a list of katas for you to choose from ...</p>
-      {katas.map((kata) => (
-        <KataCard
-          key={kata.id}
-          title={kata.title}
-          topic={kata.topic}
-          difficulty={kata.difficulty}
-          description={kata.description}
-        />
-      ))}
+      <p>Welcome! Here are a list of katas for you to choose from ...</p>
+      <KataCard katas={katas} />
     </>
   );
 }

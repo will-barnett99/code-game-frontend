@@ -1,16 +1,21 @@
 import { Link } from "react-router";
 
-function KataCard({ title, topic, difficulty, description }) {
+function KataCard({ katas }) {
   return (
-    <section>
-      <p>Kata Title: {title}</p>
-      <p>Topic:{topic}</p>
-      <p>Difficulty:{difficulty}</p>
-      <p>Description: {description}</p>
-      <Link to={`/kata`}>
-        <button>try this kata</button>
-      </Link>
-    </section>
+    <>
+      {katas.map((kata) => (
+        <section key={kata.id}>
+          <p>Kata Title: {kata.title}</p>
+          <p>Topic: {kata.topic}</p>
+          <p>Difficulty: {kata.difficulty}</p>
+          <p>Description: {kata.description}</p>
+          <Link to={`/kata`}>
+            <button>try this kata</button>
+          </Link>
+        </section>
+      ))}
+    </>
   );
 }
+
 export default KataCard;
