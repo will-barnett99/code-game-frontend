@@ -1,4 +1,5 @@
 import KataCard from "./KataCard";
+import Sidebar from "./SIdebar";
 
 function KataGallery() {
   const katas = [
@@ -76,10 +77,15 @@ function KataGallery() {
   ];
 
   return (
-    <>
-      <p>Welcome! Here are a list of katas for you to choose from ...</p>
-      <KataCard katas={katas} />
-    </>
+    <main>
+      <section>
+        <Sidebar />
+      </section>
+      <section>
+        <p>Welcome! Here are a list of katas for you to choose from ...</p>
+        <KataCard katas={katas} />
+      </section>
+    </main>
   );
 }
 
