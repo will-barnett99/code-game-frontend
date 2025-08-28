@@ -5,6 +5,7 @@ import Authentication from "./components/Authentication";
 import Kata from "./components/Kata";
 import KataGallery from "./components/KataGallery";
 import Onboarding from "./components/Onboarding";
+import "./style.css";
 
 function App() {
   return (
