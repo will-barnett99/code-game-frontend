@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .font-pixelify { font-family: "Pixelify Sans", sans-serif; }
+}
+@import "@fontsource/pixelify-sans/400.css";
+@import "@fontsource/pixelify-sans/700.css";
+
