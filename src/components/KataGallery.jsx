@@ -77,11 +77,11 @@ function KataGallery() {
   ];
 
   return (
-    <main>
-      <section>
+    <main className="mx-auto w-[1024px] flex gap-8 mt-16">
+      <section className="w-1/2">
         <Sidebar />
       </section>
-      <section>
+      <section className="w-1/2">
         <p>Welcome! Here are a list of katas for you to choose from ...</p>
         <KataCard katas={katas} />
       </section>
