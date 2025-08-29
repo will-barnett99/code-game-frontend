@@ -5,12 +5,14 @@ import Authentication from "./components/Authentication";
 import Kata from "./components/Kata";
 import KataGallery from "./components/KataGallery";
 import Onboarding from "./components/Onboarding";
+import ThemeToggle from "./components/ThemeToggle";
 import "./style.css";
 
 function App() {
   return (
-    <>
+    <section className="site-background bg-game-light bg-game-dark">
       <Header />
+      <ThemeToggle />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/onboarding" element={<Onboarding />} />
@@ -18,7 +20,7 @@ function App() {
         <Route path="/kata" element={<Kata />} />
         <Route path="/kata-gallery" element={<KataGallery />} />
       </Routes>
-    </>
+    </section>
   );
 }
 
