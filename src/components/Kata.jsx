@@ -15,7 +15,14 @@ function Kata() {
 };`,
     tests: ["assertEqual(sum(1,2), 3)", "assertEqual(sum(-1,5), 4)"],
   };
+
   const [input, setInput] = useState(kata.starterCode);
+
+  function assertEqual(actual, expected) {
+    if (actual !== expected) {
+      throw new Error(`Not quite right`);
+    }
+  }
 
   return (
     <>
