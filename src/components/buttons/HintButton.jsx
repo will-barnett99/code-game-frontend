@@ -1,8 +1,5 @@
-function HintButton({ setHint }) {
-  function getHint() {
-    setHint("Try returning the sum of a and b");
-  }
-  return <button onClick={() => getHint()}>Hint</button>;
+function HintButton({ handleHint }) {
+  return <button onClick={handleHint}>Hint</button>;
 }
 
 export default HintButton;

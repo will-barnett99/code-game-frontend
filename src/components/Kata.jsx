@@ -39,20 +39,31 @@ function Kata() {
     setOutput("");
   };
 
+  const handleHint = () => {
+    setOutput("Try returning the sum of a and b");
+  };
   return (
-    <div>
-      <h1>{kata.title}</h1>
-      <p>{kata.prompt}</p>
-      <CodeMirror
-        value={input}
-        height="300px"
-        extensions={[javascript()]}
-        onChange={(value) => setInput(value)}
-      >
-        <ButtonsContainer handleRun={handleRun} handleReset={handleReset} />
-      </CodeMirror>
-      <pre>{output}</pre>
-    </div>
+    <main>
+      <section>
+        <KataProfile />
+        <Textbox />
+      </section>
+
+      <section>
+        <CodeMirror
+          value={input}
+          height="300px"
+          extensions={[javascript()]}
+          onChange={(value) => setInput(value)}
+        />
+        <ButtonsContainer
+          handleRun={handleRun}
+          handleReset={handleReset}
+          handleHint={handleHint}
+        />
+        <pre>{output}</pre>
+      </section>
+    </main>
   );
 }
 export default Kata;
