@@ -1,37 +1,30 @@
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBolt,
-  faDumbbell,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBolt, faDumbbell } from "@fortawesome/free-solid-svg-icons";
+
 function KataCard({ katas }) {
   return (
     <>
       {katas.map((kata) => (
-        <section
+        <Link
+          to={`/kata`}
           key={kata.id}
-          className="flex flex-col gap-2 border border-gray-300 rounded-xl p-2 mb-4 bg-gray-50"
+          className="w-54 h-54 flex flex-col justify-between flex-shrink-0 p-2 border-8 border-orange-500 bg-yellow-400 text-orange-700 [box-shadow:8px_8px_0_#000000] font-bold transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
         >
-          <header className="flex items-center justify-between flex-wrap gap-4">
-            <h4 className="font-semibold">{kata.title}</h4>
-            <ul className="flex gap-4">
-              <li className="text-yellow-700">
-                <FontAwesomeIcon icon={faBolt} /> {kata.topic}
-              </li>
-              <li className="text-green-700">
-                <FontAwesomeIcon icon={faDumbbell} className="rotate-45" />{" "}
-                {kata.difficulty}
-              </li>
-            </ul>
+          <header className="flex items-center justify-between flex-wrap gap-2">
+            <h4 className="text-2xl font-extrabold">{kata.title}</h4>
+            <p className="text-xs">{kata.description}</p>
           </header>
-          <p>{kata.description}</p>
-          <Link to={`/kata`} className="ml-auto mt-8">
-            <button className="border border-gray-300 px-4 py-2 rounded cursor-pointer">
-              try this kata <FontAwesomeIcon icon={faArrowRight} />
-            </button>
-          </Link>
-        </section>
+          <ul className="flex justify-between text-xs">
+            <li className="">
+              <FontAwesomeIcon icon={faBolt} /> {kata.topic}
+            </li>
+            <li className="">
+              <FontAwesomeIcon icon={faDumbbell} className="rotate-45" />{" "}
+              {kata.difficulty}
+            </li>
+          </ul>
+        </Link>
       ))}
     </>
   );
