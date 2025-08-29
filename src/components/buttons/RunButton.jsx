@@ -1,5 +1,5 @@
-function RunButton() {
-  return <button>Run</button>;
+function RunButton({ handleRun }) {
+  return <button onClick={handleRun}>Run</button>;
 }
 
 export default RunButton;

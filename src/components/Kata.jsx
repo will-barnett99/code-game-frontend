@@ -49,8 +49,7 @@ function Kata() {
         extensions={[javascript()]}
         onChange={(value) => setInput(value)}
       >
-        <button onClick={handleRun}>Run</button>
-        <button onClick={handleReset}>Reset</button>
+        <ButtonsContainer handleRun={handleRun} handleReset={handleReset} />
       </CodeMirror>
       <pre>{output}</pre>
     </div>

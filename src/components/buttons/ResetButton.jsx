@@ -1,5 +1,5 @@
-function ResetButton({ initCode, setInput }) {
-  return <button onClick={() => setInput(initCode)}>Reset</button>;
+function ResetButton({ handleReset }) {
+  return <button onClick={handleReset}>Reset</button>;
 }
 
 export default ResetButton;
