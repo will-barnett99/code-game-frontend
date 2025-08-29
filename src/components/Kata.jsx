@@ -43,25 +43,32 @@ function Kata() {
     setOutput("Try returning the sum of a and b");
   };
   return (
-    <main>
-      <section>
-        <KataProfile />
-        <Textbox />
-      </section>
+    <main className="mt-16 bg-white h-[500px]">
+      <section className="w-[1024px] mx-auto flex gap-8 mt-16 p-8">
+        <section className="w-1/3">
+          <KataProfile />
+          <Textbox />
+        </section>
 
-      <section>
-        <CodeMirror
-          value={input}
-          height="300px"
-          extensions={[javascript()]}
-          onChange={(value) => setInput(value)}
-        />
-        <ButtonsContainer
-          handleRun={handleRun}
-          handleReset={handleReset}
-          handleHint={handleHint}
-        />
-        <pre>{output}</pre>
+        <section className="w-2/3  flex flex-col gap-4">
+          <article>
+            <h2>{kata.title}</h2>
+            <p>{kata.prompt}</p>
+          </article>
+          <CodeMirror
+            value={input}
+            height="300px"
+            extensions={[javascript()]}
+            onChange={(value) => setInput(value)}
+          />
+          <ButtonsContainer
+            handleRun={handleRun}
+            handleReset={handleReset}
+            handleHint={handleHint}
+            className="ml-auto"
+          />
+          <pre>{output}</pre>
+        </section>
       </section>
     </main>
   );
