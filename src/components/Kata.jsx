@@ -6,10 +6,16 @@ import Textbox from "./Textbox";
 import ButtonsContainer from "./ButtonsContainer";
 
 function Kata() {
-  const initCode = `function sum(a,b){
+  const kata = {
+    id: "sum-two-numbers",
+    title: "Sum Two Numbers",
+    prompt: "Write a function sum(a,b) that returns a+b.",
+    starterCode: `function sum(a,b){
   // your code here
-};`;
-  const [input, setInput] = useState(initCode);
+};`,
+    tests: ["assertEqual(sum(1,2), 3)", "assertEqual(sum(-1,5), 4)"],
+  };
+  const [input, setInput] = useState(kata.starterCode);
 
   return (
     <>
@@ -21,7 +27,7 @@ function Kata() {
         extensions={[javascript()]}
         onChange={(value) => setInput(value)}
       />
-      <ButtonsContainer initCode={initCode} setInput={setInput} />
+      <ButtonsContainer initCode={kata.starterCode} setInput={setInput} />
     </>
   );
 }
