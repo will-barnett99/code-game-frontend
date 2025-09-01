@@ -25,8 +25,6 @@ function CarouselData ({slides}) {
 
 
     return (
-
-
         <main className="flex justify-between items-center mx-auto h-screen">
             <button onClick={prevSlide}
             className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-10"
@@ -49,11 +47,7 @@ function CarouselData ({slides}) {
             <FontAwesomeIcon icon={faArrowRight} />
             </button>
         </main>
-        
-  )
-
-
-
+      )
 }
 
 export default CarouselData;
