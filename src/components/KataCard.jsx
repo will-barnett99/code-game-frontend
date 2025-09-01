@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBolt, faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 
 function KataCard({ katas }) {
   return (
@@ -16,11 +16,9 @@ function KataCard({ katas }) {
             <p className="text-xs">{kata.description}</p>
           </header>
           <ul className="flex justify-between text-xs">
+            <li className="">Javascript</li>
             <li className="">
-              <FontAwesomeIcon icon={faBolt} /> {kata.topic}
-            </li>
-            <li className="">
-              <FontAwesomeIcon icon={faDumbbell} className="rotate-45" />{" "}
+              <FontAwesomeIcon icon={faDumbbell} className="rotate-45" />
               {kata.difficulty}
             </li>
           </ul>
