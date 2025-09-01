@@ -4,7 +4,7 @@ import RunButton from "./buttons/RunButton";
 
 function ButtonsContainer({ handleRun, handleReset, handleHint }) {
   return (
-    <section>
+    <section className="h-10 flex flex-row gap-2">
       <HintButton handleHint={handleHint} />
       <RunButton handleRun={handleRun} />
       <ResetButton handleReset={handleReset} />
