@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router";
 
 
 
@@ -33,9 +34,14 @@ function CarouselData ({slides}) {
         </button>
 
         <section className="bg-green-900 border border-white p-6  w-1/2 h-1/2 mx-auto my-auto flex flex-col items-center justify-center fixed inset-0 rounded-lg p-6">
-         <h3 className="text-white text-3xl font-pixelify font-bold pb-4">{slides[currentIndex].title}</h3>
+         <h3 className="text-white text-3xl font-pixelify font-bold pb-4 pt-1">{slides[currentIndex].title}</h3>
          <img src={slides[currentIndex].img} className="w-1/2 h-auto object-contain px-4"/>
          <p className="text-white pt-4 flex items-center justify-center">{slides[currentIndex].text}</p>
+         {currentIndex === slides.length - 1 ? (
+            <Link to="/kata-gallery">
+                <button className="bg-green-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer">Go to Kata Gallery</button>
+            </Link>
+         ) : null}
         </section>
 
         <button
