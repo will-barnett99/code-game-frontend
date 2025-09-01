@@ -6,6 +6,7 @@ import Kata from "./components/Kata";
 import KataGallery from "./components/KataGallery";
 import Onboarding from "./components/Onboarding";
 import ThemeToggle from "./components/ThemeToggle";
+import MusicToggle from "./components/MusicToggle";
 import "./style.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <section className="site-background bg-game-light bg-game-dark">
       <Header />
       <ThemeToggle />
+      <MusicToggle />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/onboarding" element={<Onboarding />} />
