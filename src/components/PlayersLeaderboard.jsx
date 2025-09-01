@@ -18,7 +18,7 @@ function PlayersLeaderboard({ players = [] }) {
   return (
     <section className="max-w-4xl mx-auto px-4 py-6">
 
-      <ol className="w-full pixel-card rounded-md bg-white/85 dark:bg-gray-900/70 backdrop-blur divide-y divide-black/10 dark:divide-white/10">
+      <ol className="w-full pixel-card rounded-md bg-white/85 backdrop-blur divide-y divide-black/10">
         {display.map(({ position, name, score, isPlaceholder }) => (
 <li
   key={position}
