@@ -11,6 +11,7 @@ import MusicToggle from "./components/MusicToggle";
 import Leaderboard from "./components/Leadeboard";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
+import { GoldProvider } from "./components/GoldContext";
 import "./style.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Header />
       <ThemeToggle />
       <MusicToggle />
+      <GoldProvider>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/onboarding" element={<Onboarding />} />
@@ -30,6 +32,7 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
+      </GoldProvider>
     </section>
   );
 }

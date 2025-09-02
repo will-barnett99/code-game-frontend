@@ -13,7 +13,7 @@ function Onboarding() {
       {
         title:"How does it work?",
         img: "assets/console-log.png",
-        text: "It’s simple you select a kata from our kata list - then you complete it - you can navigate the difficulty of the katas to suit your level of knowledge."
+        text: "It’s simple you select a kata from our kata list - then you complete it - you can navigate the difficulty of the katas to suit your level of knowledge. Each Kata completed grants you 10 gold coins!"
       },
       {
         title: "We're here to help.",
@@ -23,10 +23,10 @@ function Onboarding() {
       {
         title: "Track your progress",
         img: "assets/group of veggies.png",
-        text: "Join our community and keep track of your journey by creating a profile, track your progress without fear of losing all your hard work!"
+        text: "Join our community and keep track of your journey by creating a profile. Signing up ensures your progress is saved."
       },
       {
-        title: "Onwards Hero!",
+        title: "Onwards hero!",
         img: "assets/hero-carrot.png",
         text: "That's it - time to embark on your quest - have fun!"
       }
