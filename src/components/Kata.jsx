@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import KataProfile from "./KataProfile";
 import Textbox from "./Textbox";
 import ButtonsContainer from "./ButtonsContainer";
+import getSingleKata from "../api/getKata";
+import { useParams } from "react-router";
 
 function Kata() {
+  const { kata_id } = useParams();
+  useEffect(() => {
+    getSingleKata(kata_id).then((response) => {
+      console.log(response);
+    });
+  }, []);
   const kata = {
     id: "sum-two-numbers",
     title: "Sum Two Numbers",
