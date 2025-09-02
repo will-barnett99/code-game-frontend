@@ -40,7 +40,7 @@ function SignIn() {
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 space-y-6 text-left"
+        className="w-full max-w-md bg-white rounded-lg shadow-md p-8 space-y-6 text-left"
       >
         <div>
           <label htmlFor="email" className="font-pixelify mb-1 block">
@@ -55,12 +55,12 @@ function SignIn() {
             className={`w-full px-4 py-3 rounded-md border 
               ${attempted && emailError
                 ? "border-red-500 focus:ring-red-400"
-                : "border-gray-300 dark:border-gray-600 focus:ring-amber-400"}
-              bg-gray-50 dark:bg-gray-700 text-black dark:text-white
+                : "border-gray-300 focus:ring-amber-400"}
+              bg-gray-50 text-black 
               focus:outline-none focus:ring-2`}
           />
           {attempted && emailError && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{emailError}</p>
+            <p className="mt-1 text-sm text-red-600">{emailError}</p>
           )}
         </div>
 
@@ -79,8 +79,8 @@ function SignIn() {
               className={`w-full pr-14 px-4 py-3 rounded-md border 
                 ${attempted && passwordError
                   ? "border-red-500 focus:ring-red-400"
-                  : "border-gray-300 dark:border-gray-600 focus:ring-amber-400"}
-                bg-gray-50 dark:bg-gray-700 text-black dark:text-white
+                  : "border-gray-300 focus:ring-amber-400"}
+                bg-gray-50 text-black
                 focus:outline-none focus:ring-2`}
             />
 
@@ -88,16 +88,14 @@ function SignIn() {
               type="button"
               onClick={() => setShowPwd((s) => !s)}
               className="absolute inset-y-0 right-2 my-auto h-9 px-3 rounded-md
-                         bg-gray-200 hover:bg-gray-300 text-black
-                         dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white
-                         text-sm"
+                         bg-gray-200 hover:bg-gray-300 text-black text-sm"
             >
               {showPwd ? "Hide" : "Show"}
             </button>
           </div>
 
           {attempted && passwordError && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{passwordError}</p>
+            <p className="mt-1 text-sm text-red-600">{passwordError}</p>
           )}
         </div>
 
@@ -116,7 +114,6 @@ function SignIn() {
             to="/signup"
             className="w-full py-3 font-pixelify font-bold rounded-md 
                        bg-gray-200 hover:bg-gray-300 text-black
-                       dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white
                        focus:outline-none focus:ring-2 focus:ring-amber-400
                        inline-block text-center"
           >
@@ -127,7 +124,6 @@ function SignIn() {
             to="/kata-gallery"
             className="w-full py-3 font-pixelify font-bold rounded-md 
                        bg-gray-200 hover:bg-gray-300 text-black
-                       dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white
                        focus:outline-none focus:ring-2 focus:ring-amber-400
                        inline-block text-center"
           >
