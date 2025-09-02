@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGamepad } from '@fortawesome/free-solid-svg-icons'
-<FontAwesomeIcon icon={faGamepad} />
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGamepad } from "@fortawesome/free-solid-svg-icons";
+
 function Landing() {
   return (
     <>
@@ -10,13 +10,19 @@ function Landing() {
           Welcome to our coding game
         </h1>
 
-        <Link to={`/onboarding`} className="font-pixelify font-bold cursor-pointer text-center pt-16">
-        <FontAwesomeIcon icon={faGamepad} className="text-6xl text-gray-500" />
-          <button className="text-6xl px-4"
-          >
-            Start
-          </button>
-          <FontAwesomeIcon icon={faGamepad}  className="text-6xl text-gray-500" />
+        <Link
+          to={`/onboarding`}
+          className="font-pixelify font-bold cursor-pointer text-center pt-16"
+        >
+          <FontAwesomeIcon
+            icon={faGamepad}
+            className="text-6xl text-gray-500"
+          />
+          <button className="text-6xl px-4">Start</button>
+          <FontAwesomeIcon
+            icon={faGamepad}
+            className="text-6xl text-gray-500"
+          />
         </Link>
       </section>
     </>
