@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import Landing from "./components/Landing";
 import Header from "./components/Header";
 import Kata from "./components/Kata";
@@ -15,15 +16,22 @@ function App() {
     <section className="site-background bg-game-light bg-game-dark">
       <ThemeToggle />
       <MusicToggle />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/onboarding" element={<Onboarding />} />
-        <Route path="/kata-gallery/:kata_id" element={<Kata />} />
-        <Route path="/kata-gallery" element={<KataGallery />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
+      <SignedOut>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/:kata_id" element={<Kata />} />
+        </Routes>
+      </SignedOut>
+      <SignedIn>
+        <Header />
+        <Routes>
+          <Route path="/" element={<KataGallery />} />
+          <Route path="/:kata_id" element={<Kata />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </SignedIn>
     </section>
   );
 }
