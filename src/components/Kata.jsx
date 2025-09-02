@@ -78,4 +78,5 @@ function Kata() {
     </main>
   );
 }
+
 export default Kata;
