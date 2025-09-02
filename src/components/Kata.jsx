@@ -41,7 +41,7 @@ function Kata() {
       <section className="flex gap-8">
         <section className="w-1/3">
           <KataProfile />
-          <Textbox />
+          <Textbox title={kata.title} description={kata.description} />
         </section>
 
         <section className="w-2/3 flex flex-col gap-4">
