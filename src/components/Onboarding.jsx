@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import CarouselData from "./carousel-comps/CarouselData";
 
 function Onboarding() {
@@ -37,9 +36,6 @@ function Onboarding() {
   return (
     <>
       <CarouselData slides={CarouselSlides} />
-      <Link to={`/kata-gallery`}>
-        <button>Start</button>
-      </Link>
     </>
   );
 }
