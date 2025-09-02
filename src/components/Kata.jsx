@@ -8,42 +8,28 @@ import getSingleKata from "../api/getKata";
 import { useParams } from "react-router";
 
 function Kata() {
+  const [kata, setKata] = useState("");
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const { kata_id } = useParams();
+
   useEffect(() => {
-    getSingleKata(kata_id).then((response) => {
-      console.log(response);
+    getSingleKata(kata_id).then(({ kata }) => {
+      console.log(kata);
+      setKata(kata);
+      setInput(kata.initial_code);
     });
   }, []);
-  const kata = {
-    id: "sum-two-numbers",
-    title: "Sum Two Numbers",
-    prompt: "Write a function sum(a,b) that returns a+b.",
-    starterCode: `function sum(a,b){
-  // your code here
-};`,
-    tests: ["assertEqual(sum(1,2), 3)", "assertEqual(sum(-1,5), 4)"],
-  };
-  const [input, setInput] = useState(kata.starterCode);
-  const [output, setOutput] = useState("");
-
-  function assertEqual(actual, expected) {
-    if (actual !== expected) {
-      throw new Error(`Not quite right`);
-    }
-  }
   const handleRun = () => {
-    try {
-      const functionBody = `${input}${kata.tests.join(";\n")}`;
-      const userFunction = new Function("assertEqual", functionBody);
-      userFunction(assertEqual);
+    if (input === kata.solution_code) {
       setOutput("Well done");
-    } catch (err) {
-      setOutput(err.message);
+    } else {
+      setOutput("Not quite right");
     }
   };
 
   const handleReset = () => {
-    setInput(kata.starterCode);
+    setInput(kata.initial_code);
     setOutput("");
   };
 
