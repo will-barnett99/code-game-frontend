@@ -24,6 +24,10 @@ function Header() {
           Profile
         </Link>
 
+        <Link to="/signin" className="px-4">
+          Sign In/ Sign Up
+        </Link>
+
       </nav>
     </header>
   );
