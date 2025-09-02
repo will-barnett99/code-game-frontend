@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/authentication" element={<Authentication />} />
-        <Route path="/kata" element={<Kata />} />
+        <Route path="/kata-gallery/:kata_id" element={<Kata />} />
         <Route path="/kata-gallery" element={<KataGallery />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/profile" element={<Profile />} />

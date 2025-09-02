@@ -1,41 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import KataProfile from "./KataProfile";
 import Textbox from "./Textbox";
 import ButtonsContainer from "./ButtonsContainer";
+import getSingleKata from "../api/getKata";
+import { useParams } from "react-router";
 
 function Kata() {
-  const kata = {
-    id: "sum-two-numbers",
-    title: "Sum Two Numbers",
-    prompt: "Write a function sum(a,b) that returns a+b.",
-    starterCode: `function sum(a,b){
-  // your code here
-};`,
-    tests: ["assertEqual(sum(1,2), 3)", "assertEqual(sum(-1,5), 4)"],
-  };
-  const [input, setInput] = useState(kata.starterCode);
+  const [kata, setKata] = useState("");
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const { kata_id } = useParams();
 
-  function assertEqual(actual, expected) {
-    if (actual !== expected) {
-      throw new Error(`Not quite right`);
-    }
-  }
+  useEffect(() => {
+    getSingleKata(kata_id).then(({ kata }) => {
+      console.log(kata);
+      setKata(kata);
+      setInput(kata.initial_code);
+    });
+  }, []);
   const handleRun = () => {
-    try {
-      const functionBody = `${input}${kata.tests.join(";\n")}`;
-      const userFunction = new Function("assertEqual", functionBody);
-      userFunction(assertEqual);
+    if (input === kata.solution_code) {
       setOutput("Well done");
-    } catch (err) {
-      setOutput(err.message);
+    } else {
+      setOutput("Not quite right");
     }
   };
 
   const handleReset = () => {
-    setInput(kata.starterCode);
+    setInput(kata.initial_code);
     setOutput("");
   };
 
@@ -47,7 +41,7 @@ function Kata() {
       <section className="flex gap-8">
         <section className="w-1/3">
           <KataProfile />
-          <Textbox />
+          <Textbox title={kata.title} description={kata.description} />
         </section>
 
         <section className="w-2/3 flex flex-col gap-4">
