@@ -9,6 +9,8 @@ import Profile from "./components/Profile";
 import ThemeToggle from "./components/ThemeToggle";
 import MusicToggle from "./components/MusicToggle";
 import Leaderboard from "./components/Leadeboard";
+import { GoldProvider } from "./components/GoldContext";
+
 import "./style.css";
 
 function App() {
@@ -25,12 +27,14 @@ function App() {
       </SignedOut>
       <SignedIn>
         <Header />
+            <GoldProvider>
         <Routes>
           <Route path="/" element={<KataGallery />} />
           <Route path="/:kata_id" element={<Kata />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
+</GoldProvider>
       </SignedIn>
     </section>
   );
