@@ -6,13 +6,13 @@ function Landing() {
   return (
     <>
       <section className=" flex flex-col gap-16 content-center justify-center text-white text-center">
-        <h1 className="font-pixelify text-9xl font-bold pt-32">
+        <h1 className="font-pixelify text-9xl font-bold pt-48">
           Welcome to our coding game
         </h1>
 
         <Link
           to={`/onboarding`}
-          className="font-pixelify font-bold cursor-pointer text-center pt-16"
+          className="font-pixelify font-bold cursor-pointer text-center pt-60"
         >
           <FontAwesomeIcon
             icon={faGamepad}
