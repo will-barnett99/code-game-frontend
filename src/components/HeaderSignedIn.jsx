@@ -13,7 +13,7 @@ function HeaderSignedIn() {
           Home
         </Link>
 
-        <Link to="/kata-gallery" className="px-4">
+        <Link to="/:kata-id" className="px-4">
           Play
         </Link>
 
