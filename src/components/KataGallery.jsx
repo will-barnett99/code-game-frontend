@@ -11,7 +11,7 @@ function KataGallery() {
   }, []);
   //  className="w-full max-w-[1024px] mx-auto mt-24 pb-24  lg:px-4"
   return (
-    <main className="w-full max-w-[1024px] px-4 py-8">
+    <main className="w-full max-w-[1024px] px-4 py-8 lg:gap-8 lg:mx-auto">
       <h2 className="text-2xl font-extrabold text-orange-700 [text-shadow:3px_3px_0_#000] mb-4">
         Choose a kata :
       </h2>

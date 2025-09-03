@@ -11,7 +11,7 @@ function KataCard({ katas }) {
           <Link
             to={`/${kata.kata_id}`}
             key={kata.kata_id}
-            className="w-full h-58 flex flex-col justify-between p-4 border-8 border-orange-500 bg-yellow-400 text-orange-700 [box-shadow:8px_8px_0_#000000] font-bold transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
+            className="w-full h-58 flex flex-col justify-between p-4 border-8 border-orange-500 bg-yellow-400 text-orange-700 [box-shadow:8px_8px_0_#000000] font-bold transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105 md:max-w-[48%] lg:max-w-58"
           >
             <header className="flex items-center justify-between flex-wrap gap-2">
               <h4 className="text-2xl font-extrabold">{kata.title}</h4>
