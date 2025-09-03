@@ -25,7 +25,7 @@ function Onboarding() {
     {
       title: "Onwards hero!",
       img: "assets/hero-carrot.png",
-      text: "That's it - time to embark on your quest - have fun!",
+      text: "you can try your first kata without signing in, alternatively you can sign in and access all of our kata That's it - time to embark on your quest - have fun!",
     },
   ];
 
