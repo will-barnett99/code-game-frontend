@@ -1,6 +1,7 @@
 import { Link } from "react-router";
+import { SignOutButton } from "@clerk/clerk-react";
 
-function HeaderSignedIn () {
+function HeaderSignedIn() {
   return (
     <header className="flex items-center justify-start px-4">
       <h1 className="font-pixelify text-4xl font-bold px-4 pt-2 text-auto ">
@@ -23,6 +24,7 @@ function HeaderSignedIn () {
         <Link to="/profile" className="px-4">
           Profile
         </Link>
+        <SignOutButton />
       </nav>
     </header>
   );
