@@ -9,7 +9,7 @@ function KataCard({ katas }) {
       <>
         {katas.map((kata) => (
           <Link
-            to={`/kata-gallery/${kata.kata_id}`}
+            to={`/${kata.kata_id}`}
             key={kata.kata_id}
             className="w-54 h-54 flex flex-col justify-between flex-shrink-0 p-2 border-8 border-orange-500 bg-yellow-400 text-orange-700 [box-shadow:8px_8px_0_#000000] font-bold transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
           >
