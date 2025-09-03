@@ -59,7 +59,7 @@ function Kata() {
           <Textbox
             title={kata.title}
             description={kata.description}
-            kata_id={kata.kata_id}
+            kata_id={kata_id}
           />
         </section>
 
