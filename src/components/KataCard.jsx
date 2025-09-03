@@ -17,8 +17,10 @@ function KataCard({ katas }) {
               <h4 className="text-2xl font-extrabold">{kata.title}</h4>
               <p className="text-xs">{kata.description}</p>
             </header>
-            <ul className="flex justify-between text-xs">
-              <KataTags kata_id={kata.kata_id} />
+            <ul className="flex justify-between items-end text-xs">
+              <li>
+                <KataTags kata_id={kata.kata_id} />
+              </li>
               <li className="">
                 <FontAwesomeIcon icon={faDumbbell} className="rotate-45" />
                 {kata.difficulty}
