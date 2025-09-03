@@ -27,14 +27,14 @@ function App() {
       </SignedOut>
       <SignedIn>
         <Header />
-            <GoldProvider>
-        <Routes>
-          <Route path="/" element={<KataGallery />} />
-          <Route path="/:kata_id" element={<Kata />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-</GoldProvider>
+        <GoldProvider>
+          <Routes>
+            <Route path="/" element={<KataGallery />} />
+            <Route path="/:kata_id" element={<Kata />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </GoldProvider>
       </SignedIn>
     </section>
   );
