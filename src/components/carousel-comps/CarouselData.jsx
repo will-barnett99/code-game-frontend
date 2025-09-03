@@ -35,7 +35,7 @@ function CarouselData({ slides }) {
           src={slides[currentIndex].img}
           className="w-1/2 h-auto object-contain px-4"
         />
-        <p className="text-white pt-4 flex items-center justify-center">
+        <p className="text-white pt-4 text-center">
           {slides[currentIndex].text}
         </p>
         {currentIndex === slides.length - 1 ? (
