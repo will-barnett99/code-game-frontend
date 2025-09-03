@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import Landing from "./components/Landing";
-import Header from "./components/Header";
+import HeaderSignedIn from "./components/HeaderSignedIn";
+import HeaderSignedOut from "./components/HeaderSignedOut";
 import Kata from "./components/Kata";
 import KataGallery from "./components/KataGallery";
 import Onboarding from "./components/Onboarding";
@@ -13,12 +14,14 @@ import { GoldProvider } from "./components/GoldContext";
 
 import "./style.css";
 
+
 function App() {
   return (
-    <section className="site-background bg-game-light bg-game-dark">
+    <section className="site-background bg-game-light bg-game-dark ">
       <ThemeToggle />
       <MusicToggle />
       <SignedOut>
+        <HeaderSignedOut />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/onboarding" element={<Onboarding />} />
@@ -26,7 +29,7 @@ function App() {
         </Routes>
       </SignedOut>
       <SignedIn>
-        <Header />
+        <HeaderSignedIn />
         <GoldProvider>
           <Routes>
             <Route path="/" element={<KataGallery />} />

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-function Header() {
+function HeaderSignedOut () {
   return (
     <header className="flex items-center justify-start px-4">
       <h1 className="font-pixelify text-4xl font-bold px-4 pt-2 text-auto ">
@@ -11,21 +11,9 @@ function Header() {
         <Link to="/" className="px-4">
           Home
         </Link>
-
-        <Link to="/kata-gallery" className="px-4">
-          Play
-        </Link>
-
-        <Link to="/leaderboard" className="px-4">
-          Leaderboard
-        </Link>
-
-        <Link to="/profile" className="px-4">
-          Profile
-        </Link>
       </nav>
     </header>
   );
 }
 
-export default Header;
+export default HeaderSignedOut;
