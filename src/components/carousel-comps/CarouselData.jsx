@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
+import { SignInButton } from "@clerk/clerk-react";
 
 function CarouselData({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,11 +40,18 @@ function CarouselData({ slides }) {
           {slides[currentIndex].text}
         </p>
         {currentIndex === slides.length - 1 ? (
-          <Link to="/kata-gallery">
-            <button className="bg-green-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-100">
-              Go to Kata Gallery
-            </button>
-          </Link>
+          <div>
+            <Link to="/1">
+              <button className="w-24 bg-green-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-100">
+                Try it out!
+              </button>
+            </Link>
+            <SignInButton>
+              <button className="w-24 bg-yellow-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-100">
+                Sign in
+              </button>
+            </SignInButton>
+          </div>
         ) : null}
       </section>
       <button onClick={nextSlide}>
