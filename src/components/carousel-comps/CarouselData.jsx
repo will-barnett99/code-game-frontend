@@ -15,13 +15,12 @@ function CarouselData({ slides }) {
 
   const slide = slides[currentIndex];
 
-  // Reusable classes for the arrow button containers (fixed box)
+
   const arrowBox =
-    "w-14 h-14 shrink-0 flex items-center justify-center"; // <-- fixed size boxes
+    "w-14 h-14 shrink-0 flex items-center justify-center";
 
   return (
     <main className="flex justify-center items-center mx-auto min-h-screen gap-8 px-4">
-      {/* Prev arrow: always render the box; hide the icon with 'invisible' on first */}
       <button
         onClick={prevSlide}
         disabled={isFirst}
@@ -35,7 +34,6 @@ function CarouselData({ slides }) {
         />
       </button>
 
-      {/* Green card — fixed size */}
       <section
         className="
           bg-green-900 border border-white rounded-sm
@@ -45,12 +43,10 @@ function CarouselData({ slides }) {
           justify-items-center text-center
         "
       >
-        {/* Title */}
         <h3 className="text-white text-2xl font-pixelify font-bold">
           {slide.title}
         </h3>
 
-        {/* Image area with fixed height so layout doesn't jump */}
         <div className="w-full h-[200px] flex items-center justify-center">
           <img
             src={slide.img}
@@ -59,10 +55,8 @@ function CarouselData({ slides }) {
           />
         </div>
 
-        {/* Text */}
         <p className="text-white text-lg leading-relaxed">{slide.text}</p>
 
-        {/* CTAs (only on last slide) */}
         {isLast ? (
           <div className="flex gap-3">
             <Link to="/1">
@@ -78,11 +72,10 @@ function CarouselData({ slides }) {
             </SignInButton>
           </div>
         ) : (
-          <div /> /* keep grid row height consistent */
+          <div />
         )}
       </section>
 
-      {/* Next arrow: always render the box; hide the icon with 'invisible' on last */}
       <button
         onClick={nextSlide}
         disabled={isLast}
