@@ -5,10 +5,9 @@ function KataTags({ kata_id }) {
   const [tags, setTags] = useState([]);
   useEffect(() => {
     getTags(kata_id).then(({ tags }) => {
-      console.log(tags);
       setTags(tags);
     });
-  }, []);
+  }, [kata_id]);
   return (
     <ul className="kata-tags">
       {tags.map((tag) => (
