@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import ThemeToggle from "./components/ThemeToggle";
 import MusicToggle from "./components/MusicToggle";
 import Leaderboard from "./components/Leadeboard";
+import SignUpPrompt from "./components/SignUpPrompt";
 
 import "./style.css";
 
