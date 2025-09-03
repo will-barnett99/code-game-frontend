@@ -20,10 +20,10 @@ function CarouselData({ slides }) {
 
   return (
     <main className="flex justify-center items-center mx-auto h-screen gap-8 px-4">
-      <button onClick={prevSlide} className="text-4xl hover:text-gray-300">
+      <button onClick={prevSlide}>
         <FontAwesomeIcon
           icon={faArrowLeft}
-          className="text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
+          className="text-4xl text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
           style={{ filter: "drop-shadow(2px 2px 2px black)" }}
         />
       </button>
@@ -46,13 +46,10 @@ function CarouselData({ slides }) {
           </Link>
         ) : null}
       </section>
-      <button
-        onClick={nextSlide}
-        className="text-white text-4xl hover:text-gray-300"
-      >
+      <button onClick={nextSlide}>
         <FontAwesomeIcon
           icon={faArrowRight}
-          className="text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
+          className="text-4xl text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
           style={{ filter: "drop-shadow(2px 2px 2px black)" }}
         />
       </button>
