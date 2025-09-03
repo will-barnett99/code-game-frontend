@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
+import { SignInButton } from "@clerk/clerk-react";
 
 function CarouselData({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,10 +21,10 @@ function CarouselData({ slides }) {
 
   return (
     <main className="flex justify-center items-center mx-auto h-screen gap-8 px-4">
-      <button onClick={prevSlide} className="text-4xl hover:text-gray-300">
+      <button onClick={prevSlide}>
         <FontAwesomeIcon
           icon={faArrowLeft}
-          className="text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
+          className="text-4xl text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
           style={{ filter: "drop-shadow(2px 2px 2px black)" }}
         />
       </button>
@@ -35,24 +36,28 @@ function CarouselData({ slides }) {
           src={slides[currentIndex].img}
           className="w-1/2 h-auto object-contain px-4"
         />
-        <p className="text-white pt-4 flex items-center justify-center">
+        <p className="text-white pt-4 text-center">
           {slides[currentIndex].text}
         </p>
         {currentIndex === slides.length - 1 ? (
-          <Link to="/kata-gallery">
-            <button className="bg-green-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-100">
-              Go to Kata Gallery
-            </button>
-          </Link>
+          <div>
+            <Link to="/1">
+              <button className="w-24 bg-green-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-100">
+                Try it out!
+              </button>
+            </Link>
+            <SignInButton>
+              <button className="w-24 bg-yellow-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-100">
+                Sign in
+              </button>
+            </SignInButton>
+          </div>
         ) : null}
       </section>
-      <button
-        onClick={nextSlide}
-        className="text-white text-4xl hover:text-gray-300"
-      >
+      <button onClick={nextSlide}>
         <FontAwesomeIcon
           icon={faArrowRight}
-          className="text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
+          className="text-4xl text-green-600 transition-transform duration-200 ease-out hover:-translate-y-2 hover:scale-105"
           style={{ filter: "drop-shadow(2px 2px 2px black)" }}
         />
       </button>
