@@ -56,19 +56,17 @@ export default function MusicToggle({ tracks = TRACKS }) {
     return audioRef.current;
   };
 
-
   useEffect(() => {
     if (!currentTrack) return;
     const a = ensureAudio();
     a.src = currentTrack.src;
-    a.loop = true;  
+    a.loop = true;
     a.load();
     if (playing) {
       a.play().catch((e) => console.error("Audio play failed:", e));
     }
     localStorage.setItem("musicTrackIndex", String(trackIndex));
   }, [trackIndex, currentTrack?.src]);
-
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = volume;
@@ -77,7 +75,6 @@ export default function MusicToggle({ tracks = TRACKS }) {
   useEffect(() => {
     if (audioRef.current) audioRef.current.playbackRate = speed;
   }, [speed]);
-
 
   const togglePlay = async () => {
     const a = ensureAudio();
@@ -109,64 +106,68 @@ export default function MusicToggle({ tracks = TRACKS }) {
   };
 
   const nextTrack = () => setTrackIndex((i) => (i + 1) % tracks.length);
-  const prevTrack = () => setTrackIndex((i) => (i - 1 + tracks.length) % tracks.length);
+  const prevTrack = () =>
+    setTrackIndex((i) => (i - 1 + tracks.length) % tracks.length);
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+    <div className="ml-4 flex flex-col items-end gap-2">
       <div className="flex items-center gap-2">
         <button
           onClick={togglePlay}
-          className="px-4 py-2 rounded-lg bg-gray-200 text-gray-900
-                     dark:bg-gray-700 dark:text-white font-semibold shadow"
+          className="w-[138px] h-[40px] rounded-lg bg-gray-700"
         >
           {playing ? "🔇 Stop Music" : "🎵 Play Music"}
         </button>
 
-        <button
+        {/* <button
           onClick={() => setShowSettings((s) => !s)}
           className="px-3 py-2 rounded-lg bg-gray-200 text-gray-900
                      dark:bg-gray-700 dark:text-white shadow"
           title="Settings"
         >
           ⚙️
-        </button>
+        </button> */}
       </div>
 
-{showSettings && (
-  <div
-    className="w-96 p-4 rounded-lg bg-white/90 dark:bg-gray-800/90 shadow backdrop-blur
+      {showSettings && (
+        <div
+          className="w-96 p-4 rounded-lg bg-white/90 dark:bg-gray-800/90 shadow backdrop-blur
                border border-black/5 dark:border-white/10 space-y-3"
-  >
-    <div className="flex items-center justify-between">
-      <button
-        type="button"
-        onClick={prevTrack}
-        className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700"
-        title="Previous"
-      >
-        ◀︎
-      </button>
+        >
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={prevTrack}
+              className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700"
+              title="Previous"
+            >
+              ◀︎
+            </button>
 
-      <p className="mx-2 text-sm text-gray-700 dark:text-gray-200 text-center flex-1 truncate">
-        Now playing: <span className="font-semibold">{currentTrack?.title}</span>
-      </p>
+            <p className="mx-2 text-sm text-gray-700 dark:text-gray-200 text-center flex-1 truncate">
+              Now playing:{" "}
+              <span className="font-semibold">{currentTrack?.title}</span>
+            </p>
 
-      <button
-        type="button"
-        onClick={nextTrack}
-        className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700"
-        title="Next"
-      >
-        ▶︎
-      </button>
-    </div>
+            <button
+              type="button"
+              onClick={nextTrack}
+              className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700"
+              title="Next"
+            >
+              ▶︎
+            </button>
+          </div>
 
           <div>
             <label className="block text-xs mb-1 text-gray-700 dark:text-gray-200">
               Volume: {Math.round(volume * 100)}%
             </label>
             <input
-              type="range" min="0" max="1" step="0.01"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
               value={volume}
               onChange={(e) => changeVolume(e.target.value)}
               className="w-full"
@@ -178,7 +179,10 @@ export default function MusicToggle({ tracks = TRACKS }) {
               Speed: {speed.toFixed(2)}×
             </label>
             <input
-              type="range" min="0.5" max="2" step="0.05"
+              type="range"
+              min="0.5"
+              max="2"
+              step="0.05"
               value={speed}
               onChange={(e) => changeSpeed(e.target.value)}
               className="w-full"
