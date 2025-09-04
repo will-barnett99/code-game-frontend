@@ -25,12 +25,14 @@ function PodiumLeaderboard() {
   };
 
   return (
-    <section className="max-w-4xl mx-auto w-full px-4 py-10">
-      <header className="text-center mb-8">
-        <h2 className="font-pixelify text-4xl sm:text-5xl text-auto mt-10 mb-50">
-          🏆 Leaderboard 🏆
-        </h2>
-      </header>
+<section className="max-w-4xl mx-auto w-full px-4 pt-24">
+  <header className="text-center mb-8">
+    <h1 className="font-pixelify text-4xl sm:text-5xl text-auto mt-10 mb-50">
+      🏆 Leaderboard 🏆
+    </h1>
+  </header>
+
+
 
       <main className="w-full">
         <div className="grid grid-cols-3 gap-0 items-end w-full mb-3">

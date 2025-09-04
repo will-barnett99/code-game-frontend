@@ -1,61 +1,95 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { Link } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { SignInButton } from "@clerk/clerk-react";
+
+function CarouselData({ slides }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const isFirst = currentIndex === 0;
+  const isLast  = currentIndex === slides.length - 1;
+
+  const prevSlide = () => !isFirst && setCurrentIndex((i) => i - 1);
+  const nextSlide = () => !isLast  && setCurrentIndex((i) => i + 1);
+
+  const slide = slides[currentIndex];
 
 
+  const arrowBox =
+    "w-14 h-14 shrink-0 flex items-center justify-center";
 
-function CarouselData ({slides}) {
+  return (
+    <main className="flex justify-center items-center mx-auto min-h-screen gap-8 px-4">
+      <button
+        onClick={prevSlide}
+        disabled={isFirst}
+        className={`${arrowBox} ${isFirst ? "cursor-default" : "cursor-pointer"}`}
+      >
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          className={`text-4xl text-white transition-transform duration-200 ease-out
+                      ${isFirst ? "invisible" : "hover:-translate-y-2 hover:scale-105"}`}
+          style={{ filter: "drop-shadow(2px 2px 2px black)" }}
+        />
+      </button>
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+      <section
+        className="
+          bg-green-900 border border-white rounded-sm
+          w-full max-w-2xl h-[480px]
+          p-6
+          grid grid-rows-[auto,1fr,auto,auto] gap-4
+          justify-items-center text-center
+        "
+      >
+        <h3 className="text-white text-2xl font-pixelify font-bold">
+          {slide.title}
+        </h3>
 
-    const prevSlide = () => {
-        const isFirstSlide = currentIndex === 0;
-        const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-        setCurrentIndex(newIndex)
-    }
+        <div className="w-full h-[200px] flex items-center justify-center">
+          <img
+            src={slide.img}
+            alt=""
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
 
-    const nextSlide = () => {
-        const isLastSlide = currentIndex === slides.length - 1;
-        const newIndex = isLastSlide ? 0 : currentIndex + 1;
-        setCurrentIndex(newIndex)
-        
-    }
+        <p className="text-white text-lg leading-relaxed">{slide.text}</p>
 
-
-
-    return (
-        <div className="relative w-full h-screen flex items-center justify-center">
-
-        <section className="bg-green-900 border border-white p-6  w-1/2 h-1/2 mx-auto my-auto flex flex-col items-center justify-center fixed inset-0 rounded-lg p-6">
-        <div>
-        <button
-            onClick={prevSlide}
-         className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-gray-300"
-            >
-            <FontAwesomeIcon icon={faArrowLeft} />
-        </button>
-        <button
-        onClick={nextSlide}
-        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 hover:text-gray-300"
-         >
-        <FontAwesomeIcon icon={faArrowRight} />
-         </button>
-         </div>
-        <h3 className="text-white text-3xl font-pixelify font-bold pb-4 pt-1">{slides[currentIndex].title}</h3>
-         <img src={slides[currentIndex].img} className="w-1/2 h-auto object-contain px-4"/>
-         <p className="text-white pt-4 flex items-center justify-center">{slides[currentIndex].text}</p>
-         {currentIndex === slides.length - 1 ? (
-            <Link to="/kata-gallery">
-                <button className="bg-green-600 border border-white m-2 p-2 rounded-sm text-white font-bold cursor-pointer">Go to Kata Gallery</button>
+        {isLast ? (
+          <div className="flex gap-3">
+            <Link to="/1">
+              <button className="w-32 h-12 bg-green-600 border border-white rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 flex items-center justify-center">
+                Play now!
+              </button>
             </Link>
-         ) : null}
-        </section>
-     </div>
+
+            <SignInButton>
+              <button className="w-32 h-12 bg-yellow-600 border border-white rounded-sm text-white font-bold cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-2 flex items-center justify-center">
+                Sign in
+              </button>
+            </SignInButton>
+          </div>
+        ) : (
+          <div />
+        )}
+      </section>
+
+      <button
+        onClick={nextSlide}
+        disabled={isLast}
+        className={`${arrowBox} ${isLast ? "cursor-default" : "cursor-pointer"}`}
+      >
+        <FontAwesomeIcon
+          icon={faArrowRight}
+          className={`text-4xl text-white transition-transform duration-200 ease-out
+                      ${isLast ? "invisible" : "hover:-translate-y-2 hover:scale-105"}`}
+          style={{ filter: "drop-shadow(2px 2px 2px black)" }}
+        />
+      </button>
+    </main>
   );
-
-
-
 }
 
 export default CarouselData;

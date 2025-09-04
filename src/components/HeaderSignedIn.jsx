@@ -1,10 +1,11 @@
 import { Link } from "react-router";
+import { SignOutButton } from "@clerk/clerk-react";
 
-function Header() {
+function HeaderSignedIn() {
   return (
     <header className="flex items-center justify-start px-4">
       <h1 className="font-pixelify text-4xl font-bold px-4 pt-2 text-auto ">
-       <Link to="/">KataQuest</Link> 
+        <Link to="/">KataQuest</Link>
       </h1>
 
       <nav className="font-pixelify text-xl font-bold ml-auto mr-40 mt-5 text-auto ">
@@ -12,7 +13,7 @@ function Header() {
           Home
         </Link>
 
-        <Link to="/kata-gallery" className="px-4">
+        <Link to="/:kata-id" className="px-4">
           Play
         </Link>
 
@@ -23,10 +24,10 @@ function Header() {
         <Link to="/profile" className="px-4">
           Profile
         </Link>
-
+        <SignOutButton />
       </nav>
     </header>
   );
 }
 
-export default Header;
+export default HeaderSignedIn;
