@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
-import getTags from "../api/getTags";
-
-function KataTags({ kata_id }) {
-  const [tags, setTags] = useState([]);
-  useEffect(() => {
-    getTags(kata_id).then(({ tags }) => {
-      setTags(tags);
-    });
-  }, [kata_id]);
-  return (
-    <ul className="kata-tags">
+function KataTags({ tags }) {
+  return tags && tags.length > 0 ? (
+    <ul>
       {tags.map((tag) => (
         <li key={tag}>{tag}</li>
       ))}
     </ul>
-  );
+  ) : null;
 }
 
 export default KataTags;

@@ -1,9 +1,9 @@
 import axios from "axios";
 
-async function getTags(kata_id) {
+async function getKataContent(kata_id, params) {
   try {
     const response = await axios.get(
-      `https://kata-quest.onrender.com/api/katas/${kata_id}/tags`
+      `https://kata-quest.onrender.com/api/katas/${kata_id}/${params}`
     );
     return response.data;
   } catch (error) {
@@ -11,4 +11,4 @@ async function getTags(kata_id) {
   }
 }
 
-export default getTags;
+export default getKataContent;
