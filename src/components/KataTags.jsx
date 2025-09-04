@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import getTags from "../api/getTags";
+import getKataContent from "../api/getKataContent";
 
 function KataTags({ kata_id }) {
   const [tags, setTags] = useState([]);
   useEffect(() => {
-    getTags(kata_id).then(({ tags }) => {
+    getKataContent(kata_id, "tags").then(({ tags }) => {
       setTags(tags);
     });
   }, [kata_id]);
