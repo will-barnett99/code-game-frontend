@@ -8,18 +8,31 @@ import getSingleKata from "../api/getKata";
 import { useParams } from "react-router";
 import postSubmission from "../api/postSubmission";
 import NextKata from "./buttons/NextKata";
+import getKataContent from "../api/getKataContent";
 
 function Kata() {
   const [kata, setKata] = useState("");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [pass, setPass] = useState(false);
+  const [tags, setTags] = useState([]);
+  const [hint, setHint] = useState("");
+  const [note, setNote] = useState("");
   const { kata_id } = useParams();
 
   useEffect(() => {
     getSingleKata(kata_id).then(({ kata }) => {
       setKata(kata);
       setInput(kata.initial_code);
+    });
+    Promise.all([
+      getKataContent(kata_id, "hint"),
+      getKataContent(kata_id, "tags"),
+      getKataContent(kata_id, "note"),
+    ]).then(([hintResponse, tagsResponse, noteResponse]) => {
+      if (hintResponse.hint) setHint(hintResponse.hint);
+      if (tagsResponse.tags) setTags(tagsResponse.tags);
+      if (noteResponse.note) setTags(noteResponse.note);
     });
   }, [kata_id]);
 
@@ -48,7 +61,8 @@ function Kata() {
   };
 
   const handleHint = () => {
-    setOutput("Try returning the sum of a and b");
+    console.log(hint);
+    setOutput(hint);
   };
 
   return (
@@ -62,6 +76,8 @@ function Kata() {
           title={kata.title}
           description={kata.description}
           kata_id={kata_id}
+          tags={tags}
+          note={note}
         />
       </section>
       <section className="lg:w-2/3 flex flex-col gap-2 lg:gap-4">
