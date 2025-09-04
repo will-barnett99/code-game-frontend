@@ -12,9 +12,9 @@ function Header() {
   return (
     <header className="sticky top-0 flex font-bold text-white p-4">
       <Link to="/">
-        <h1 className="text-4xl">{"<KataQuest>"}</h1>
+        <h1 className="text-3xl">{"<KataQuest>"}</h1>
       </Link>
-      <nav className="flex flex-row gap-8 items-center ml-auto pr-4 font-pixelify text-xl text-center">
+      <nav className="flex flex-row gap-4 items-center ml-auto pr-4 font-pixelify text-lg text-center">
         <SignedOut>
           <SignInButton />
         </SignedOut>

@@ -1,27 +1,21 @@
 import { Route, Routes } from "react-router";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import Header from "./components/Header";
 import Landing from "./components/Landing";
-import HeaderSignedIn from "./components/HeaderSignedIn";
-import HeaderSignedOut from "./components/HeaderSignedOut";
 import Kata from "./components/Kata";
 import KataGallery from "./components/KataGallery";
 import Onboarding from "./components/Onboarding";
 import Profile from "./components/Profile";
-import ThemeToggle from "./components/ThemeToggle";
-import MusicToggle from "./components/MusicToggle";
 import Leaderboard from "./components/Leadeboard";
 import SignUpPrompt from "./components/SignUpPrompt";
 
 import "./style.css";
 
-
 function App() {
   return (
-    <section className="site-background bg-game-light bg-game-dark ">
-      <ThemeToggle />
-      <MusicToggle />
+    <section className="relative site-background bg-game-light bg-game-dark ">
+      <Header />
       <SignedOut>
-        <HeaderSignedOut />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/onboarding" element={<Onboarding />} />
@@ -30,13 +24,12 @@ function App() {
         </Routes>
       </SignedOut>
       <SignedIn>
-        <HeaderSignedIn />
-          <Routes>
-            <Route path="/" element={<KataGallery />} />
-            <Route path="/:kata_id" element={<Kata />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<KataGallery />} />
+          <Route path="/:kata_id" element={<Kata />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
       </SignedIn>
     </section>
   );
