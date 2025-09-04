@@ -1,10 +1,15 @@
 import axios from "axios";
 
-const postSubmission = async (userData) => {
+const postSubmission = async (userData, token) => {
   try {
     const response = await axios.post(
       "https://kata-quest.onrender.com/api/submission",
-      userData
+      userData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     return response.data;
   } catch (error) {
