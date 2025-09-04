@@ -14,10 +14,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="fixed top-4 right-4 z-50 px-4 py-2 rounded-lg
-                 bg-gray-200 text-gray-900
-                 dark:bg-gray-700 dark:text-white
-                 font-semibold"
+      className="w-[138px] h-[40px] rounded-lg bg-gray-700"
     >
       {theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode"}
     </button>
