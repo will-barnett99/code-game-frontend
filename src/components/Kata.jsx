@@ -61,7 +61,6 @@ function Kata() {
   };
 
   const handleHint = () => {
-    console.log(hint);
     setOutput(hint);
   };
 
