@@ -26,6 +26,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/:kata_id" element={<Kata />} />
+          <Route path="/authentication" element={<SignUpPrompt />} />
         </Routes>
       </SignedOut>
       <SignedIn>

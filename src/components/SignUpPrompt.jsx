@@ -1,5 +1,6 @@
 import { SignUpButton, SignInButton } from '@clerk/clerk-react'
 
+
 function SignUpPrompt () {
 
     return (
