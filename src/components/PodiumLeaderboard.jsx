@@ -25,14 +25,12 @@ function PodiumLeaderboard() {
   };
 
   return (
-<section className="max-w-4xl mx-auto w-full px-4 pt-24">
-  <header className="text-center mb-8">
-    <h1 className="font-pixelify text-4xl sm:text-5xl text-auto mt-10 mb-50">
-      🏆 Leaderboard 🏆
-    </h1>
-  </header>
-
-
+    <section className="max-w-4xl mx-auto w-full px-4 pt-24">
+      <header className="text-center mb-8">
+        <h1 className="font-pixelify text-4xl sm:text-5xl text-auto mt-10 mb-50">
+          🏆 Leaderboard 🏆
+        </h1>
+      </header>
 
       <main className="w-full">
         <div className="grid grid-cols-3 gap-0 items-end w-full mb-3">
@@ -41,7 +39,7 @@ function PodiumLeaderboard() {
             title={`2nd – ${second.name} (${second.score})`}
           >
             <img
-              src="/assets/medal-2.png"
+              src="/assets/Medal-2.png"
               alt="Silver medal"
               className="absolute bottom-2 h-12 w-12 object-contain pointer-events-none select-none"
             />
@@ -52,7 +50,7 @@ function PodiumLeaderboard() {
             title={`1st – ${first.name} (${first.score})`}
           >
             <img
-              src="/assets/medal-1.png"
+              src="/assets/Medal-1.png"
               alt="Gold medal"
               className="absolute bottom-2 h-12 w-12 object-contain pointer-events-none select-none"
             />
@@ -63,7 +61,7 @@ function PodiumLeaderboard() {
             title={`3rd – ${third.name} (${third.score})`}
           >
             <img
-              src="/assets/medal-3.png"
+              src="/assets/Medal-3.png"
               alt="Bronze medal"
               className="absolute bottom-2 h-12 w-12 object-contain pointer-events-none select-none"
             />
@@ -73,21 +71,15 @@ function PodiumLeaderboard() {
         <ul className="grid grid-cols-3 text-center text-auto">
           <li>
             <div className="font-pixelify text-lg">{second.name}</div>
-            <small className="opacity-80">
-              XP: {second.score}
-            </small>
+            <small className="opacity-80">XP: {second.score}</small>
           </li>
           <li>
             <div className="font-pixelify text-lg">{first.name}</div>
-            <small className="opacity-80">
-              XP: {first.score}
-            </small>
+            <small className="opacity-80">XP: {first.score}</small>
           </li>
           <li>
             <div className="font-pixelify text-lg">{third.name}</div>
-            <small className="opacity-80">
-              XP: {third.score}
-            </small>
+            <small className="opacity-80">XP: {third.score}</small>
           </li>
         </ul>
       </main>
