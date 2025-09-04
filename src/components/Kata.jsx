@@ -32,7 +32,7 @@ function Kata() {
     ]).then(([hintResponse, tagsResponse, noteResponse]) => {
       if (hintResponse.hint) setHint(hintResponse.hint);
       if (tagsResponse.tags) setTags(tagsResponse.tags);
-      if (noteResponse.note) setTags(noteResponse.note);
+      if (noteResponse.note) setNote(noteResponse.note);
     });
   }, [kata_id]);
 

@@ -1,25 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointRight } from "@fortawesome/free-solid-svg-icons";
 
-function RelativeNotes() {
+function RelativeNotes({ note }) {
   return (
     <section>
-      <h3 className="text-2xl font-bold mt-6">Notes</h3>
-      <p>You may find notes on functions and operators useful here:</p>
-      <ul>
-        <li className="font-bold p-2">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions">
-            <FontAwesomeIcon className="text-[20px]" icon={faHandPointRight} />{" "}
-            Notes on Functions
-          </a>
-        </li>
-        <li className="font-bold p-2">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators">
-            <FontAwesomeIcon className="text-[20px]" icon={faHandPointRight} />{" "}
-            Notes on Operators
-          </a>
-        </li>
-      </ul>
+      <p className="font-bold">Notes:</p>
+      <a href={note} target="_blank" rel="noreferrer">
+        <FontAwesomeIcon className="text-[20px]" icon={faHandPointRight} />{" "}
+        Helpful Notes
+      </a>
     </section>
   );
 }
