@@ -16,7 +16,7 @@ function Header() {
       </Link>
       <nav className="flex flex-row gap-4 items-center ml-auto pr-4 font-pixelify text-lg text-center">
         <SignedOut>
-          <SignInButton />
+          <SignInButton forceRedirectUrl="/" />
         </SignedOut>
         <SignedIn>
           <Link to="/">PLay</Link>
