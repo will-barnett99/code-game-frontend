@@ -1,69 +1,70 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "@clerk/clerk-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import KataProfile from "./KataProfile";
 import Textbox from "./Textbox";
 import ButtonsContainer from "./ButtonsContainer";
-import getSingleKata from "../api/getKata";
 import { useParams } from "react-router";
-import postSubmission from "../api/postSubmission";
 import NextKata from "./buttons/NextKata";
-import getKataContent from "../api/getKataContent";
+import useKata from "../hooks/useKata";
+import useSubmission from "../hooks/useSubmission";
 
 function Kata() {
-  const [kata, setKata] = useState("");
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [pass, setPass] = useState(false);
-  const [tags, setTags] = useState([]);
-  const [hint, setHint] = useState("");
-  const [note, setNote] = useState("");
-
   const { kata_id } = useParams();
+  const { kata, tags, hint, note, loading, error } = useKata(kata_id);
+  const [input, setInput] = useState("");
+  const [token, setToken] = useState(null);
+  const { getToken } = useAuth();
 
   useEffect(() => {
-    getSingleKata(kata_id).then(({ kata }) => {
-      setKata(kata);
+    getToken()
+      .then((t) => setToken(t))
+      .catch((err) => console.error("Failed to get token:", err));
+  }, [getToken]);
+
+  const {
+    output,
+    pass,
+    loading: submissionLoading,
+    error: submissionError,
+    runSubmission,
+    reset,
+    setOutput,
+  } = useSubmission();
+
+  useEffect(() => {
+    if (kata?.initial_code) {
       setInput(kata.initial_code);
-    });
-    Promise.all([
-      getKataContent(kata_id, "hint"),
-      getKataContent(kata_id, "tags"),
-      getKataContent(kata_id, "note"),
-    ]).then(([hintResponse, tagsResponse, noteResponse]) => {
-      if (hintResponse.hint) setHint(hintResponse.hint);
-      if (tagsResponse.tags) setTags(tagsResponse.tags);
-      if (noteResponse.note) setNote(noteResponse.note);
-    });
-  }, [kata_id]);
+    }
+  }, [kata]);
 
   const handleRun = () => {
+    if (!token || !kata?.kata_id) return;
     const userData = {
       kata_id: kata.kata_id,
       user_code: input,
     };
-    postSubmission(userData)
-      .then(({ result }) => {
-        if (result === "PASS") {
-          setOutput("Well done");
-          setPass(true);
-        } else {
-          setOutput("Not quite right");
-        }
-      })
-      .catch((error) => {
-        console.error("Submission failed:", error);
-      });
+    runSubmission({ userData, token });
   };
+  const handleReset = () => setInput(reset(kata.initial_code));
+  const handleHint = () => setOutput(hint);
 
-  const handleReset = () => {
-    setInput(kata.initial_code);
-    setOutput("");
-  };
+  if (loading) {
+    return (
+      <main className="flex items-center justify-center h-[560px]">
+        <p className="text-lg font-bold text-orange-700">Loading kata…</p>
+      </main>
+    );
+  }
 
-  const handleHint = () => {
-    setOutput(hint);
-  };
+  if (error) {
+    return (
+      <main className="flex items-center justify-center h-[560px]">
+        <p className="text-lg font-bold text-red-600">{error}</p>
+      </main>
+    );
+  }
 
   return (
     <main
@@ -94,7 +95,11 @@ function Kata() {
           handleHint={handleHint}
         />
         <p className="lg:mt-auto text-center lg:text-right lg:font-bold">
-          {output}
+          {submissionLoading && !output
+            ? "Running your code..."
+            : submissionError
+            ? submissionError
+            : output}
         </p>
         {pass ? <NextKata kata_id={kata_id} /> : null}
       </section>
