@@ -8,10 +8,12 @@ export default function useKata(kata_id) {
   const [tags, setTags] = useState([]);
   const [hint, setHint] = useState("");
   const [note, setNote] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!kata_id) return;
 
+    setLoading(true);
     getSingleKata(kata_id).then(({ kata }) => setKata(kata));
 
     Promise.all([
@@ -22,8 +24,9 @@ export default function useKata(kata_id) {
       if (hintResponse.hint) setHint(hintResponse.hint);
       if (tagsResponse.tags) setTags(tagsResponse.tags);
       if (noteResponse.note) setNote(noteResponse.note);
+      setLoading(false);
     });
   }, [kata_id]);
 
-  return { kata, tags, hint, note };
+  return { kata, tags, hint, note, loading };
 }

@@ -4,38 +4,24 @@ import { javascript } from "@codemirror/lang-javascript";
 import KataProfile from "./KataProfile";
 import Textbox from "./Textbox";
 import ButtonsContainer from "./ButtonsContainer";
-import getSingleKata from "../api/getKata";
 import { useParams } from "react-router";
 import postSubmission from "../api/postSubmission";
 import NextKata from "./buttons/NextKata";
-import getKataContent from "../api/getKataContent";
+import useKata from "../hooks/useKata";
 
 function Kata() {
-  const [kata, setKata] = useState("");
+  const { kata_id } = useParams();
+  const { kata, tags, hint, note, loading } = useKata(kata_id);
+
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [pass, setPass] = useState(false);
-  const [tags, setTags] = useState([]);
-  const [hint, setHint] = useState("");
-  const [note, setNote] = useState("");
-
-  const { kata_id } = useParams();
 
   useEffect(() => {
-    getSingleKata(kata_id).then(({ kata }) => {
-      setKata(kata);
+    if (kata?.initial_code) {
       setInput(kata.initial_code);
-    });
-    Promise.all([
-      getKataContent(kata_id, "hint"),
-      getKataContent(kata_id, "tags"),
-      getKataContent(kata_id, "note"),
-    ]).then(([hintResponse, tagsResponse, noteResponse]) => {
-      if (hintResponse.hint) setHint(hintResponse.hint);
-      if (tagsResponse.tags) setTags(tagsResponse.tags);
-      if (noteResponse.note) setNote(noteResponse.note);
-    });
-  }, [kata_id]);
+    }
+  }, [kata]);
 
   const handleRun = () => {
     const userData = {
@@ -64,6 +50,14 @@ function Kata() {
   const handleHint = () => {
     setOutput(hint);
   };
+
+  if (loading) {
+    return (
+      <main className="flex items-center justify-center h-full">
+        <p className="text-lg font-bold text-orange-700">Loading kata…</p>
+      </main>
+    );
+  }
 
   return (
     <main
