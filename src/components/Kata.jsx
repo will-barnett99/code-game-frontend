@@ -11,7 +11,7 @@ import useSubmission from "../hooks/useSubmission";
 
 function Kata() {
   const { kata_id } = useParams();
-  const { kata, tags, hint, note, loading } = useKata(kata_id);
+  const { kata, tags, hint, note, loading, error } = useKata(kata_id);
   const [input, setInput] = useState("");
   const { output, pass, runSubmission, reset, setOutput } = useSubmission();
 
@@ -27,8 +27,16 @@ function Kata() {
 
   if (loading) {
     return (
-      <main className="flex items-center justify-center h-full">
+      <main className="flex items-center justify-center h-[560px]">
         <p className="text-lg font-bold text-orange-700">Loading kata…</p>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="flex items-center justify-center h-[560px]">
+        <p className="text-lg font-bold text-red-600">{error}</p>
       </main>
     );
   }
