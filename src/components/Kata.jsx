@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "@clerk/clerk-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import KataProfile from "./KataProfile";
@@ -14,15 +13,6 @@ function Kata() {
   const { kata_id } = useParams();
   const { kata, tags, hint, note, loading, error } = useKata(kata_id);
   const [input, setInput] = useState("");
-  const [token, setToken] = useState(null);
-  const { getToken } = useAuth();
-
-  useEffect(() => {
-    getToken()
-      .then((t) => setToken(t))
-      .catch((err) => console.error("Failed to get token:", err));
-  }, [getToken]);
-
   const {
     output,
     pass,
@@ -39,14 +29,7 @@ function Kata() {
     }
   }, [kata]);
 
-  const handleRun = () => {
-    if (!token || !kata?.kata_id) return;
-    const userData = {
-      kata_id: kata.kata_id,
-      user_code: input,
-    };
-    runSubmission({ userData, token });
-  };
+  const handleRun = () => runSubmission({ kata_id, user_code: input });
   const handleReset = () => setInput(reset(kata.initial_code));
   const handleHint = () => setOutput(hint);
 
@@ -95,7 +78,7 @@ function Kata() {
           handleHint={handleHint}
         />
         <p className="lg:mt-auto text-center lg:text-right lg:font-bold">
-          {submissionLoading && !output
+          {submissionLoading
             ? "Running your code..."
             : submissionError
             ? submissionError

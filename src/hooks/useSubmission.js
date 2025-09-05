@@ -7,16 +7,12 @@ export default function useSubmission() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const runSubmission = async ({ userData, token }) => {
-    if (!token) {
-      setError("No authentication token available.");
-      return;
-    }
+  const runSubmission = async ({ kata_id, user_code }) => {
     setLoading(true);
     setError(null);
 
     try {
-      const { result } = await postSubmission(userData, token);
+      const { result } = await postSubmission({ kata_id, user_code });
       if (result === "PASS") {
         setOutput("Well done");
         setPass(true);
