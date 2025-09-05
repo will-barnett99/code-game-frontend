@@ -17,8 +17,8 @@ import {
 function Profile() {
   return (
     <>
-      <div className="w-full max-w-[1024px] mx-auto mt-24 flex flex-col md:flex-row gap-12">
-        <aside className="w-full md:w-1/3 p-4 border-8 text-center md:text-left border-orange-500 bg-yellow-400 text-orange-700 [box-shadow:8px_8px_0_#000000]">
+      <div className="w-[1024px] mx-auto mt-24 flex flex-row gap-12">
+        <aside className="w-1/3 p-4 border-8 text-center border-orange-500 bg-yellow-400 text-orange-700 [box-shadow:8px_8px_0_#000000]">
           <figure>
             <figcaption>
               <FontAwesomeIcon
@@ -92,7 +92,7 @@ function Profile() {
           </section>
         </aside>
 
-        <main className="w-full md:w-2/3">
+        <main className="w-2/3">
           <section className="flex flex-col gap-2 p-4 border-8 border-orange-500 bg-yellow-400 text-orange-700 [box-shadow:8px_8px_0_#000000]">
             <h4 className="text-2xl font-extrabold">FizzBuzz</h4>
             <p>Classic Loop challenge</p>
