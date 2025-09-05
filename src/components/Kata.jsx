@@ -13,7 +13,15 @@ function Kata() {
   const { kata_id } = useParams();
   const { kata, tags, hint, note, loading, error } = useKata(kata_id);
   const [input, setInput] = useState("");
-  const { output, pass, runSubmission, reset, setOutput } = useSubmission();
+  const {
+    output,
+    pass,
+    loading: submissionLoading,
+    error: submissionError,
+    runSubmission,
+    reset,
+    setOutput,
+  } = useSubmission();
 
   useEffect(() => {
     if (kata?.initial_code) {
@@ -70,7 +78,11 @@ function Kata() {
           handleHint={handleHint}
         />
         <p className="lg:mt-auto text-center lg:text-right lg:font-bold">
-          {output}
+          {submissionLoading
+            ? "Running your code..."
+            : submissionError
+            ? submissionError
+            : output}
         </p>
         {pass ? <NextKata kata_id={kata_id} /> : null}
       </section>
