@@ -5,7 +5,7 @@ import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 function Landing() {
   return (
     <>
-      <section className="w-[100vw] h-[calc(100vh-48px)] flex flex-col gap-4  md:gap-8 lg:gap-16 items-center justify-center lg:justify-start lg:pt-48 text-center font-pixelify text-white">
+      <section className="flex flex-col gap-4 md:gap-8 lg:gap-16 items-center justify-center lg:justify-start lg:pt-48 text-center font-pixelify text-white">
         <h1 className="max-w-[1024px] text-5xl md:text-7xl lg:text-9xl font-bold">
           Welcome to our coding game
         </h1>

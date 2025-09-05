@@ -8,28 +8,32 @@ function CarouselData({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const isFirst = currentIndex === 0;
-  const isLast  = currentIndex === slides.length - 1;
+  const isLast = currentIndex === slides.length - 1;
 
   const prevSlide = () => !isFirst && setCurrentIndex((i) => i - 1);
-  const nextSlide = () => !isLast  && setCurrentIndex((i) => i + 1);
+  const nextSlide = () => !isLast && setCurrentIndex((i) => i + 1);
 
   const slide = slides[currentIndex];
 
-
-  const arrowBox =
-    "w-14 h-14 shrink-0 flex items-center justify-center";
+  const arrowBox = "w-14 h-14 shrink-0 flex items-center justify-center";
 
   return (
-    <main className="flex justify-center items-center mx-auto min-h-screen gap-8 px-4">
+    <main className="h-[calc(100vh-72px)] flex justify-center items-center mx-auto gap-8 px-4">
       <button
         onClick={prevSlide}
         disabled={isFirst}
-        className={`${arrowBox} ${isFirst ? "cursor-default" : "cursor-pointer"}`}
+        className={`${arrowBox} ${
+          isFirst ? "cursor-default" : "cursor-pointer"
+        }`}
       >
         <FontAwesomeIcon
           icon={faArrowLeft}
           className={`text-4xl text-white transition-transform duration-200 ease-out
-                      ${isFirst ? "invisible" : "hover:-translate-y-2 hover:scale-105"}`}
+                      ${
+                        isFirst
+                          ? "invisible"
+                          : "hover:-translate-y-2 hover:scale-105"
+                      }`}
           style={{ filter: "drop-shadow(2px 2px 2px black)" }}
         />
       </button>
@@ -79,12 +83,18 @@ function CarouselData({ slides }) {
       <button
         onClick={nextSlide}
         disabled={isLast}
-        className={`${arrowBox} ${isLast ? "cursor-default" : "cursor-pointer"}`}
+        className={`${arrowBox} ${
+          isLast ? "cursor-default" : "cursor-pointer"
+        }`}
       >
         <FontAwesomeIcon
           icon={faArrowRight}
           className={`text-4xl text-white transition-transform duration-200 ease-out
-                      ${isLast ? "invisible" : "hover:-translate-y-2 hover:scale-105"}`}
+                      ${
+                        isLast
+                          ? "invisible"
+                          : "hover:-translate-y-2 hover:scale-105"
+                      }`}
           style={{ filter: "drop-shadow(2px 2px 2px black)" }}
         />
       </button>
