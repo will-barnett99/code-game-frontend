@@ -19,8 +19,7 @@ function Header() {
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <Link to="/">Home</Link>
-          <Link to="/:kata-id">Play</Link>
+          <Link to="/">PLay</Link>
           <Link to="/leaderboard">Leaderboard</Link>
           <Link to="/profile">Profile</Link>
           <SignOutButton />
