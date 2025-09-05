@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "@clerk/clerk-react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import KataProfile from "./KataProfile";
@@ -19,18 +18,8 @@ function Kata() {
   const [tags, setTags] = useState([]);
   const [hint, setHint] = useState("");
   const [note, setNote] = useState("");
-  const [token, setToken] = useState(null);
 
   const { kata_id } = useParams();
-  const { getToken } = useAuth();
-
-  useEffect(() => {
-    getToken()
-      .then((t) => {
-        setToken(t);
-      })
-      .catch((err) => console.error("Failed to get token:", err));
-  }, [getToken]);
 
   useEffect(() => {
     getSingleKata(kata_id).then(({ kata }) => {
@@ -53,7 +42,7 @@ function Kata() {
       kata_id: kata.kata_id,
       user_code: input,
     };
-    postSubmission(userData, token)
+    postSubmission(userData)
       .then(({ result }) => {
         if (result === "PASS") {
           setOutput("Well done");
