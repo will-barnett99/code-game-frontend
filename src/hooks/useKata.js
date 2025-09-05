@@ -1,4 +1,3 @@
-// hooks/useKata.js
 import { useEffect, useState } from "react";
 import getSingleKata from "../api/getKata";
 import getKataContent from "../api/getKataContent";

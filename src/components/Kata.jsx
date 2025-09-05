@@ -5,17 +5,15 @@ import KataProfile from "./KataProfile";
 import Textbox from "./Textbox";
 import ButtonsContainer from "./ButtonsContainer";
 import { useParams } from "react-router";
-import postSubmission from "../api/postSubmission";
 import NextKata from "./buttons/NextKata";
 import useKata from "../hooks/useKata";
+import useSubmission from "../hooks/useSubmission";
 
 function Kata() {
   const { kata_id } = useParams();
   const { kata, tags, hint, note, loading } = useKata(kata_id);
-
   const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [pass, setPass] = useState(false);
+  const { output, pass, runSubmission, reset, setOutput } = useSubmission();
 
   useEffect(() => {
     if (kata?.initial_code) {
@@ -23,33 +21,9 @@ function Kata() {
     }
   }, [kata]);
 
-  const handleRun = () => {
-    const userData = {
-      kata_id: kata.kata_id,
-      user_code: input,
-    };
-    postSubmission(userData)
-      .then(({ result }) => {
-        if (result === "PASS") {
-          setOutput("Well done");
-          setPass(true);
-        } else {
-          setOutput("Not quite right");
-        }
-      })
-      .catch((error) => {
-        console.error("Submission failed:", error);
-      });
-  };
-
-  const handleReset = () => {
-    setInput(kata.initial_code);
-    setOutput("");
-  };
-
-  const handleHint = () => {
-    setOutput(hint);
-  };
+  const handleRun = () => runSubmission({ kata_id, user_code: input });
+  const handleReset = () => setInput(reset(kata.initial_code));
+  const handleHint = () => setOutput(hint);
 
   if (loading) {
     return (
